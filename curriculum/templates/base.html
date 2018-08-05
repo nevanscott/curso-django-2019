@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Local Library{% endblock %}</title>
+  <style>
+    body {
+      max-width: 70ch;
+      margin: auto;
+      padding: 3em;
+      font-family: system-ui, sans-serif;
+      line-height: 1.5;
+    }
+    img { max-width: 100%; }
+  </style>
+</head>
+
+<body>
+  <div>
+    {% if user.is_authenticated %}
+      Hi, {{ user }}!
+      (<a href="{% url 'logout' %}">Log out</a>)
+    {% else %}
+      <a href="{% url 'login' %}">Log in</a>
+    {% endif %}
+  </div>
+  {% block sidebar %}{% endblock %}
+  {% block content %}{% endblock %}
+</body>
+</html>

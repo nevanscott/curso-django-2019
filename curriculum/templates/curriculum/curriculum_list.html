@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Curriculum{% endblock %}
+
+{% block content %}
+
+<h1>Curriculum</h1>
+
+<ul>
+{% for curriculum in curriculum_list %}
+  <li><a href="{% url 'curriculum:detail' curriculum.id %}">{{ curriculum.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

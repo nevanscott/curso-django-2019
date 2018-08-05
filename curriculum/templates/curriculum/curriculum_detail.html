@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ curriculum }}{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'curriculum:index' %}">&larr; All Curriculum</a>
+
+<h1>{{ curriculum }}</h1>
+
+<h2>Readings</h2>
+
+<ul>
+  {% for reading in curriculum.readings %}
+    <li><a href="{% url 'curriculum:reading_detail' reading.id %}">{{ reading }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
