@@ -19,7 +19,7 @@ class Instance(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.curriculum) + ' ' + str(self.start_date)
+        return str(self.curriculum) + ' ' + str(self.location) + ' ' + str(self.start_date)
     def class_days(self):
         dates = []
         for n in range(int((self.end_date + timedelta(1) - self.start_date).days)):
