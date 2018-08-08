@@ -23,6 +23,13 @@
 {% endfor %}
 </ul>
 
+{% if perms.curriculum.can_view %}
+  <h2>Curriculum Readings</h2>
+  {% for reading in instance.curriculum.readings %}
+    <li><a href="{% url 'curriculum:reading_detail' reading.id %}">{{ reading }}</a></li>
+  {% endfor %}
+{% endif %}
+
 <style>
 .calendar {
   display: grid;
