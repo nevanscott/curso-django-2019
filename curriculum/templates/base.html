@@ -4,26 +4,46 @@
   <title>{% block title %}Local Library{% endblock %}</title>
   <style>
     body {
-      max-width: 70ch;
-      margin: auto;
-      padding: 3em;
       font-family: system-ui, sans-serif;
       line-height: 1.5;
+      margin: 0;
+      padding: 0;
     }
     img { max-width: 100%; }
+    main {
+      margin: auto;
+      padding: 3em;
+    }
+    article {
+      max-width: 70ch;
+      margin: auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid;
+      padding: 0.5em 1em;
+    }
   </style>
 </head>
 
 <body>
-  <div>
-    {% if user.is_authenticated %}
-      Hi, {{ user }}!
-      (<a href="{% url 'logout' %}">Log out</a>)
-    {% else %}
-      <a href="{% url 'login' %}">Log in</a>
-    {% endif %}
-  </div>
+  <header>
+    <nav>
+      <a href="{% url 'classroom:index' %}">Home</a>
+    </nav>
+    <div>
+      {% if user.is_authenticated %}
+        Hi, {{ user }}!
+        (<a href="{% url 'logout' %}">Log out</a>)
+      {% else %}
+        <a href="{% url 'login' %}">Log in</a>
+      {% endif %}
+    </div>
+  </header>
   {% block sidebar %}{% endblock %}
-  {% block content %}{% endblock %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 </body>
 </html>

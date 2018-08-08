@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'classroom.apps.ClassroomConfig',
     'curriculum.apps.CurriculumConfig',
     'markdownify',
     'django.contrib.admin',

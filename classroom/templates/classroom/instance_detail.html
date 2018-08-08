@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ instance }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ instance }}</h1>
+
+<ul class="calendar">
+{% for day in instance.schedule %}
+  <li>
+    {{ day.date }}
+    {% if day.events %}
+      <ul>
+        {% for event in day.events %}
+          <li>
+            <a href="{% url 'classroom:event' event.id %}">{{ event }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
+
+<style>
+.calendar {
+  display: grid;
+  background: black;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1px;
+  margin: 0;
+  padding: 0;
+}
+.calendar > li {
+  list-style: none;
+  background: white;
+  padding: 0.5em;
+}
+</style>
+
+{% endblock %}
