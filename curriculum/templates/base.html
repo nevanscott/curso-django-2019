@@ -12,6 +12,9 @@
     img { max-width: 100%; }
     main { margin: auto; padding: 3em; }
     article { max-width: 70ch; margin: auto; }
+    h1 { font-weight: 800; }
+    a { color: blue; font-weight: 600; text-decoration: none; }
+    a:hover { color: mediumblue; text-decoration: underline; }
     header {
       display: flex;
       justify-content: space-between;
@@ -20,16 +23,16 @@
       color: black;
     }
     header a, header a:hover { color: inherit; }
-    h1 { font-weight: 800; }
-    a { color: blue; font-weight: 600; text-decoration: none; }
-    a:hover { color: mediumblue; text-decoration: underline; }
+    nav { display: flex; }
+    nav a:not(:last-child) { margin-right: 1em; }
   </style>
 </head>
 
 <body>
   <header>
     <nav>
-      <a href="{% url 'classroom:index' %}">Home</a>
+      <a href="{% url 'classroom:index' %}">Classroom</a>
+      {% if perms.curriculum.can_view %}<a href="{% url 'curriculum:index' %}">Curriculum</a>{% endif %}
     </nav>
     <div>
       {% if user.is_authenticated %}

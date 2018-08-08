@@ -1,14 +1,17 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
 
 from .models import Reading, Curriculum
 
-class CurriculumListView(LoginRequiredMixin, generic.ListView):
+class CurriculumListView(PermissionRequiredMixin, generic.ListView):
+    permission_required = 'curriculum.can_view'
     model = Curriculum
 
-class CurriculumDetailView(LoginRequiredMixin, generic.DetailView):
+class CurriculumDetailView(PermissionRequiredMixin, generic.DetailView):
+    permission_required = 'curriculum.can_view'
     model = Curriculum
 
-class ReadingDetailView(LoginRequiredMixin, generic.DetailView):
+class ReadingDetailView(PermissionRequiredMixin, generic.DetailView):
+    permission_required = 'curriculum.can_view'
     model = Reading
