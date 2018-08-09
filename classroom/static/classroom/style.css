@@ -5,20 +5,25 @@ body {
   margin: 0;
   padding: 0;
 }
+body[data-mode=dark] {
+  background: #111;
+  color: white;
+}
 img { max-width: 100%; }
 main { margin: auto; padding: 3em; }
 article { max-width: 70ch; margin: auto; }
 h1 { font-weight: 800; }
 a { color: blue; font-weight: 600; text-decoration: none; }
 a:hover { color: mediumblue; text-decoration: underline; }
+body[data-mode=dark] a { color: dodgerblue; }
+body[data-mode=dark] a:hover { color: deepskyblue; }
 
 /* Banner */
 header {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid;
-  padding: 0.5em 1em;
-  color: black;
+  padding: 0.75em 1em;
 }
 header a, header a:hover { color: inherit; }
 nav { display: flex; }
@@ -27,7 +32,7 @@ nav a:not(:last-child) { margin-right: 1em; }
 /* Calendar */
 .calendar {
   display: grid;
-  background: black;
+  background: currentColor;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1px;
   margin: 0;
@@ -38,11 +43,15 @@ nav a:not(:last-child) { margin-right: 1em; }
   background: white;
   padding: 0.5em;
 }
+body[data-mode=dark] .calendar > li {
+  background: #111;
+}
 
 /* Bootstrap-style Markdown Formatting */
 .info, .warning, .danger {
   border: solid 2px #00000033;
   border-width: 2px 0;
+  color: black;
   margin: 1em 0;
   padding: 1em 1.5em;
 }

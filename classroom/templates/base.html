@@ -25,5 +25,15 @@
   <main>
     {% block content %}{% endblock %}
   </main>
+  <script>
+    // Lighting modes
+    var now = new Date();
+    var hour = now.getHours();
+    if ( hour >= 20 || hour < 7 ) {
+      document.getElementsByTagName('body')[0].dataset.mode = 'dark';
+    } else {
+      document.getElementsByTagName('body')[0].dataset.mode = 'light';
+    }
+  </script>
 </body>
 </html>
