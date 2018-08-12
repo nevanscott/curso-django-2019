@@ -6,14 +6,25 @@
 
 <a href="{% url 'curriculum:index' %}">&larr; All Curriculum</a>
 
-<h1>{{ curriculum }}</h1>
+<h1>{{ curriculum }} {{ curriculum.version_set.first }}</h1>
 
-<h2>Readings</h2>
+<h2>Schedule</h2>
 
-<ul>
-  {% for reading in curriculum.readings %}
-    <li><a href="{% url 'curriculum:reading_detail' reading.id %}">{{ reading }}</a></li>
+<ul class="calendar">
+{% for week in curriculum.version_set.first.week_set.all %}
+  {% for day in week.day_set.all %}
+    <li>
+      W{{ week.number }}D{{ day.number }}
+      <ul>
+        {% for lesson in day.lessons.all %}
+          {% for reading in lesson.readings.all %}
+            <li><a href="{% url 'curriculum:reading_detail' reading.id %}">{{ reading }}</a></li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </li>
   {% endfor %}
+{% endfor %}
 </ul>
 
 {% endblock %}

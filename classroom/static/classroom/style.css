@@ -11,12 +11,22 @@ body[data-mode=dark] {
 }
 img { max-width: 100%; }
 main { margin: auto; padding: 3em; }
-article { max-width: 70ch; margin: auto; }
 h1 { font-weight: 800; }
 a { color: blue; font-weight: 600; text-decoration: none; }
 a:hover { color: mediumblue; text-decoration: underline; }
 body[data-mode=dark] a { color: dodgerblue; }
 body[data-mode=dark] a:hover { color: deepskyblue; }
+
+/* Article */
+article {
+  font-family: Georgia, serif;
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin: auto;
+  max-width: 60ch;
+}
+article h1 { font-weight: normal; font-size: 2em; }
+article h2 { font-family: system-ui, sans-serif; }
 
 /* Banner */
 header {
@@ -43,17 +53,29 @@ nav a:not(:last-child) { margin-right: 1em; }
   background: white;
   padding: 0.5em;
 }
+.calendar > li ul {
+  margin: 0;
+  padding: 0;
+}
+.calendar > li li {
+  list-style: none;
+  margin: .5em 0;
+  padding: 0;
+}
 body[data-mode=dark] .calendar > li {
   background: #111;
 }
 
 /* Bootstrap-style Markdown Formatting */
-.info, .warning, .danger {
+.success, .info, .warning, .danger {
   border: solid 2px #00000033;
   border-width: 2px 0;
   color: black;
   margin: 1em 0;
   padding: 1em 1.5em;
+}
+.success {
+  background: lightgreen;
 }
 .info {
   background: lightblue;
