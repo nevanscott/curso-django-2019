@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Instances{% endblock %}
+{% block title %}Classes{% endblock %}
 
 {% block content %}
 
@@ -11,5 +11,9 @@
   <li><a href="{% url 'classroom:instance' instance.id %}">{{ instance }}</a></li>
 {% endfor %}
 </ul>
+
+{% if perms.instance.can_create %}
+<a class="button" href="{% url 'classroom:create_instance' %}">+ New Class</a>
+{% endif %}
 
 {% endblock %}

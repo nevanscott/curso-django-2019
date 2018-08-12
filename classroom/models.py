@@ -1,6 +1,8 @@
-from django.db import models
 from datetime import timedelta, date
+from django.db import models
+from django.urls import reverse
 from curriculum.models import Curriculum
+
 
 class School(models.Model):
     name = models.CharField(max_length=255)
@@ -36,6 +38,8 @@ class Instance(models.Model):
                     'events': Event.objects.filter(instance=self).filter(date=date)
                 })
         return schedule
+    def get_absolute_url(self):
+        return reverse('classroom:instance', kwargs={'pk': self.pk})
 
 class Event(models.Model):
     instance = models.ForeignKey(Instance, on_delete=models.CASCADE)

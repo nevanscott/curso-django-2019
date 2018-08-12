@@ -16,6 +16,7 @@ a { color: blue; font-weight: 600; text-decoration: none; }
 a:hover { color: mediumblue; text-decoration: underline; }
 body[data-mode=dark] a { color: dodgerblue; }
 body[data-mode=dark] a:hover { color: deepskyblue; }
+a.button { display: inline-block; border: 2px solid; border-radius: 5em; padding: 0 1em; }
 
 /* Article */
 article {
