@@ -14,7 +14,7 @@
 {% for week in curriculum.version_set.first.week_set.all %}
   {% for day in week.day_set.all %}
     <li>
-      W{{ week.number }}D{{ day.number }}
+      {{ week.number }}.{{ day.number }}
       <ul>
         {% for lesson in day.lessons.all %}
           {% for reading in lesson.readings.all %}

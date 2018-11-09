@@ -24,10 +24,30 @@
 </ul>
 
 {% if perms.curriculum.can_view %}
-  <h2>Curriculum Readings</h2>
-  {% for reading in instance.curriculum.readings %}
-    <li><a href="{% url 'curriculum:reading_detail' reading.id %}">{{ reading }}</a></li>
+  <h2>Suggested Schedule</h2>
+  <ul class="calendar">
+  {% for week in instance.curriculum.version_set.first.week_set.all %}
+    {% for day in week.day_set.all %}
+      <li>
+        {{ week.number }}.{{ day.number }}
+        <ul>
+          {% for lesson in day.lessons.all %}
+            {% for reading in lesson.readings.all %}
+              <li><a href="{% url 'curriculum:reading_detail' reading.id %}">{{ reading }}</a></li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
   {% endfor %}
+  </ul>
+
+  <h2>Curriculum Readings</h2>
+  <ol>
+    {% for reading in instance.curriculum.readings %}
+      <li><a href="{% url 'curriculum:reading_detail' reading.id %}">{{ reading }}</a></li>
+    {% endfor %}
+  </ol>
 {% endif %}
 
 {% endblock %}
